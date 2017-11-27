@@ -2,6 +2,8 @@
 #define IESFORM_H
 
 #include <QWidget>
+#include <string>
+using namespace std;
 
 namespace Ui {
 class IESForm;

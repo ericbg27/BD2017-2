@@ -16,7 +16,7 @@ IESForm::~IESForm()
 
 void IESForm::on_pushButton_released()
 {
-    IESResult *iesresult = new IESResult;
+    IESResult *iesresult = new IESResult(ui->Busca->text());
     iesresult->show();
     this->close();
 }
