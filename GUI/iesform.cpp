@@ -33,7 +33,7 @@ void IESForm::on_pushButton_released()
     }
     if(cod){
      IESResult *iesresult = new IESResult(ui->Busca->text(), cod);
-     iesresult->showMaximized();
+     iesresult->show();
      this->close();
     }
 }
