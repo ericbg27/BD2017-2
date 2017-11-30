@@ -7,6 +7,7 @@
 #include "mysql/mysql.h"
 #include "iostream"
 #include "QVector"
+#include "string"
 using namespace std;
 
 IESResult::IESResult(QWidget *parent) :
@@ -31,8 +32,10 @@ IESResult::IESResult(QString busca, int opt){
     label<<"Codigo"<<"Nome"<<"Sigla"<<"Região";
     table->setHorizontalHeaderLabels(label);
     table->verticalHeader()->setVisible(false);
-    table->setMaximumWidth(1000);
-    table->setMinimumWidth(1000);
+    table->setMaximumWidth(TABLEWIDTH);
+    table->setMinimumWidth(TABLEWIDTH);
+    table->setMaximumHeight(TABLEHEIGHT);
+    table->setMinimumHeight(TABLEHEIGHT);
     buscatmp=busca.toUtf8().constData();
     query="select * from IES where ";
     switch(opt){

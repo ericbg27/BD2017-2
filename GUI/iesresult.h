@@ -2,7 +2,8 @@
 #define IESRESULT_H
 
 #include <QWidget>
-#include <string>
+#define TABLEWIDTH 1290
+#define TABLEHEIGHT 630
 using namespace std;
 
 namespace Ui {
