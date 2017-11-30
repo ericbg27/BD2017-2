@@ -25,13 +25,14 @@ IESResult::IESResult(QString busca, int opt){
     QLabel* colabel = new QLabel(this);
     QLabel* nolabel = new QLabel(this);
     QLabel* sgllabel = new QLabel(this);
+    QLabel* reglabel = new QLabel(this);
     int i=0;
     mysql_init(&con);
     buscatmp=busca.toUtf8().constData();
     query="select * from IES where ";
     switch(opt){
         case 1:
-            query+="CO_IES"+buscatmp;
+            query+="CO_IES="+buscatmp;
             break;
         case 2:
             query+="NO_IES=\""+buscatmp+"\"";
@@ -58,6 +59,8 @@ IESResult::IESResult(QString busca, int opt){
                    grid->addWidget(nolabel,i,1);
                    sgllabel->setText(data[2]);
                    grid->addWidget(sgllabel,i,2);
+                   reglabel->setText(data[3]);
+                   grid->addWidget(reglabel,i,3);
                    i++;
                 }
                 this->setLayout(grid);
