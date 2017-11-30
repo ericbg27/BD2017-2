@@ -17,8 +17,23 @@ IESForm::~IESForm()
 
 void IESForm::on_pushButton_released()
 {
+    int cod=0;
     cout<<"ok"<<endl;
-    IESResult *iesresult = new IESResult(ui->Busca->text());
-    iesresult->show();
-    this->close();
+    if(ui->CodRadio->isChecked()){
+        cod=1;
+    }
+    else if(ui->NomeRadio->isChecked()){
+        cod=2;
+    }
+    else if(ui->RegRadio->isChecked()){
+        cod=3;
+    }
+    else if(ui->SigRadio->isChecked()){
+        cod=4;
+    }
+    if(cod){
+     IESResult *iesresult = new IESResult(ui->Busca->text(), cod);
+     iesresult->show();
+     this->close();
+    }
 }

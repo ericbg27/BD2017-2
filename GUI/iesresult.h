@@ -15,7 +15,7 @@ class IESResult : public QWidget
 
 public:
     explicit IESResult(QWidget *parent = 0);
-    IESResult(QString);
+    IESResult(QString, int);
     ~IESResult();
 
 private:
