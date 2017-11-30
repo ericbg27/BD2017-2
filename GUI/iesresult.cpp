@@ -2,6 +2,7 @@
 #include "QLabel"
 #include "QGridLayout"
 #include "QList"
+#include "QTableWidget"
 #include "ui_iesresult.h"
 #include "mysql/mysql.h"
 #include "iostream"
@@ -21,13 +22,17 @@ IESResult::IESResult(QString busca, int opt){
     MYSQL_RES* result;
     MYSQL_ROW data;
     string query="", buscatmp;
-    QGridLayout *grid = new QGridLayout;
-    QLabel* colabel = new QLabel(this);
-    QLabel* nolabel = new QLabel(this);
-    QLabel* sgllabel = new QLabel(this);
-    QLabel* reglabel = new QLabel(this);
+    QTableWidget* table = new QTableWidget(this);
+    QStringList label;
     int i=0;
     mysql_init(&con);
+    table->setRowCount(100);
+    table->setColumnCount(20);
+    label<<"Codigo"<<"Nome"<<"Sigla"<<"Região";
+    table->setHorizontalHeaderLabels(label);
+    table->verticalHeader()->setVisible(false);
+    table->setMaximumWidth(1000);
+    table->setMinimumWidth(1000);
     buscatmp=busca.toUtf8().constData();
     query="select * from IES where ";
     switch(opt){
@@ -53,17 +58,12 @@ IESResult::IESResult(QString busca, int opt){
             if(result){
                 while((data=mysql_fetch_row(result))!=NULL){
                    cout<<"Conectado"<<endl;
-                   colabel->setText(data[0]);
-                   grid->addWidget(colabel,i,0);
-                   nolabel->setText(data[1]);
-                   grid->addWidget(nolabel,i,1);
-                   sgllabel->setText(data[2]);
-                   grid->addWidget(sgllabel,i,2);
-                   reglabel->setText(data[3]);
-                   grid->addWidget(reglabel,i,3);
+                   table->setItem(i,0,new QTableWidgetItem(data[0]));
+                   table->setItem(i,1, new QTableWidgetItem(data[1]));
+                   table->setItem(i,2,new QTableWidgetItem(data[2]));
+                   table->setItem(i,3,new QTableWidgetItem(data[8]));
                    i++;
                 }
-                this->setLayout(grid);
             }
         }
     }
