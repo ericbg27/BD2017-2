@@ -27,7 +27,6 @@ IESResult::IESResult(QString busca, int opt){
     QStringList label;
     int i=0;
     mysql_init(&con);
-    table->setRowCount(100);
     table->setColumnCount(20);
     label<<"Codigo"<<"Nome"<<"Sigla"<<"Região";
     table->setHorizontalHeaderLabels(label);
@@ -60,12 +59,13 @@ IESResult::IESResult(QString busca, int opt){
             result=mysql_store_result(&con);
             if(result){
                 while((data=mysql_fetch_row(result))!=NULL){
-                   cout<<"Conectado"<<endl;
-                   table->setItem(i,0,new QTableWidgetItem(data[0]));
-                   table->setItem(i,1, new QTableWidgetItem(data[1]));
-                   table->setItem(i,2,new QTableWidgetItem(data[2]));
-                   table->setItem(i,3,new QTableWidgetItem(data[8]));
-                   i++;
+                    table->setRowCount(i+1);
+                    cout<<"Conectado"<<endl;
+                    table->setItem(i,0,new QTableWidgetItem(data[0]));
+                    table->setItem(i,1, new QTableWidgetItem(data[1]));
+                    table->setItem(i,2,new QTableWidgetItem(data[2]));
+                    table->setItem(i,3,new QTableWidgetItem(data[8]));
+                    i++;
                 }
             }
         }
