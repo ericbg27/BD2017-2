@@ -26,10 +26,11 @@ void IESResult::run(QString busca, int opt){
     QStringList label;
     int i=0;
     mysql_init(&con);
-    table->setColumnCount(18);
+    table->setColumnCount(28);
     label<<"Codigo"<<"Nome"<<"Sigla"<<"Município"<<"UF"<<"Região"<<"Categoria administrativa"<<"Organização Acadêmica"<<"IES da Capital";
     label<<"Acesso portal CAPES"<<"Acesso outras bases"<<"Repositório Institucional"<<"Busca Integrada"<<"Serviço de Internet"<<"Participa de rede social"<<"Catálogo Online";
-    label<<"Quantidade de periodicos eletrônicos"<<"Quantidade de livros eletrônicos";
+    label<<"Quantidade de periodicos eletrônicos"<<"Quantidade de livros eletrônicos"<<"Valor receita própria"<<"Valor transferência"<<"Valor outra receita"<<"Valor remuneração docente"<<"Valor despesa técnico";
+    label<<"Depesa pessoal encargo"<<"Valor custeio"<<"Despesa investimento"<<"Despesa pesquisa"<<"Despesa outras";
     table->setColumnWidth(0,60);
     table->setColumnWidth(1,650);
     table->setColumnWidth(2,160);
@@ -46,6 +47,16 @@ void IESResult::run(QString busca, int opt){
     table->setColumnWidth(15,200);
     table->setColumnWidth(16,260);
     table->setColumnWidth(17,250);
+    table->setColumnWidth(18,250);
+    table->setColumnWidth(19,250);
+    table->setColumnWidth(20,250);
+    table->setColumnWidth(21,250);
+    table->setColumnWidth(22,250);
+    table->setColumnWidth(23,250);
+    table->setColumnWidth(24,250);
+    table->setColumnWidth(25,250);
+    table->setColumnWidth(26,250);
+    table->setColumnWidth(27,250);
     table->setHorizontalHeaderLabels(label);
     table->verticalHeader()->setVisible(false);
     table->setMaximumWidth(TABLEWIDTH);
@@ -53,7 +64,7 @@ void IESResult::run(QString busca, int opt){
     table->setMaximumHeight(TABLEHEIGHT);
     table->setMinimumHeight(TABLEHEIGHT);
     buscatmp=busca.toUtf8().constData();
-    query="select * from IES natural join MANTENEDORA natural join CATEGORIA_ADMINISTRATIVA natural join ORGANIZACAO_ACADEMICA inner join MUNICIPIO on CO_MUNICIPIO_IES=CO_MUNICIPIO inner join UF on CO_UF_IES=CO_UF  where ";
+    query="select * from IES natural join MANTENEDORA natural join CATEGORIA_ADMINISTRATIVA natural join ORGANIZACAO_ACADEMICA inner join MUNICIPIO on CO_MUNICIPIO_IES=CO_MUNICIPIO inner join UF on CO_UF_IES=CO_UF  natural join VALORES where ";
     switch(opt){
         case 1:
             query+="CO_IES="+buscatmp;
@@ -125,6 +136,16 @@ void IESResult::run(QString busca, int opt){
                         table->setItem(i,15,new QTableWidgetItem("Falso"));
                     table->setItem(i,16,new QTableWidgetItem(data[17]));
                     table->setItem(i,17,new QTableWidgetItem(data[18]));
+                    table->setItem(i,18, new QTableWidgetItem(data[27]));
+                    table->setItem(i,19, new QTableWidgetItem(data[28]));
+                    table->setItem(i,20, new QTableWidgetItem(data[29]));
+                    table->setItem(i,21, new QTableWidgetItem(data[30]));
+                    table->setItem(i,22, new QTableWidgetItem(data[31]));
+                    table->setItem(i,23, new QTableWidgetItem(data[32]));
+                    table->setItem(i,24, new QTableWidgetItem(data[33]));
+                    table->setItem(i,25, new QTableWidgetItem(data[34]));
+                    table->setItem(i,26, new QTableWidgetItem(data[35]));
+                    table->setItem(i,27, new QTableWidgetItem(data[36]));
                     i++;
                 }
             }

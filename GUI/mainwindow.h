@@ -20,6 +20,8 @@ private slots:
 
     void on_DOCButton_released();
 
+    void on_CURButton_released();
+
 private:
     Ui::MainWindow *ui;
 };

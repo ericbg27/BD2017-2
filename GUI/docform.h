@@ -15,6 +15,9 @@ public:
     explicit DOCForm(QWidget *parent = 0);
     ~DOCForm();
 
+private slots:
+    void on_BuscaButton_released();
+
 private:
     Ui::DOCForm *ui;
 };

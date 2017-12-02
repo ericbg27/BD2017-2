@@ -28,3 +28,8 @@ void MainWindow::on_DOCButton_released()
     docform->show();
     this->close();
 }
+
+void MainWindow::on_CURButton_released()
+{
+
+}

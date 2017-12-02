@@ -18,14 +18,22 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     iesform.cpp \
     iesresult.cpp \
-    docform.cpp
+    docform.cpp \
+    class.cpp \
+    curform.cpp \
+    docresult.cpp
 
 HEADERS  += mainwindow.h \
     iesform.h \
     iesresult.h \
-    docform.h
+    docform.h \
+    class.h \
+    curform.h \
+    docresult.h
 
 FORMS    += mainwindow.ui \
     iesform.ui \
     iesresult.ui \
-    docform.ui
+    docform.ui \
+    curform.ui \
+    docresult.ui
