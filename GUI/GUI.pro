@@ -17,12 +17,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     iesform.cpp \
-    iesresult.cpp
+    iesresult.cpp \
+    docform.cpp
 
 HEADERS  += mainwindow.h \
     iesform.h \
-    iesresult.h
+    iesresult.h \
+    docform.h
 
 FORMS    += mainwindow.ui \
     iesform.ui \
-    iesresult.ui
+    iesresult.ui \
+    docform.ui

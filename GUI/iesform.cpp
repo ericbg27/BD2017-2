@@ -31,8 +31,12 @@ void IESForm::on_pushButton_released()
     else if(ui->SigRadio->isChecked()){
         cod=4;
     }
+    else if(ui->MunRadio->isChecked()){
+        cod=5;
+    }
     if(cod){
-     IESResult *iesresult = new IESResult(ui->Busca->text(), cod);
+     IESResult *iesresult = new IESResult();
+     iesresult->run(ui->Busca->text(), cod);
      iesresult->showMaximized();
      this->close();
     }

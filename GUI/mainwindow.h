@@ -18,6 +18,8 @@ public:
 private slots:
     void on_IESButton_released();
 
+    void on_DOCButton_released();
+
 private:
     Ui::MainWindow *ui;
 };

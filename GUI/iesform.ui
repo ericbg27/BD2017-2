@@ -88,6 +88,19 @@
     <string>Buscar</string>
    </property>
   </widget>
+  <widget class="QRadioButton" name="MunRadio">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>80</y>
+     <width>112</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Município</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

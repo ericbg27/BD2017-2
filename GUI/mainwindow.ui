@@ -27,7 +27,7 @@
      <string>IES</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="ALUButton">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -40,7 +40,7 @@
      <string>Aluno</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="DOCButton">
     <property name="geometry">
      <rect>
       <x>20</x>
