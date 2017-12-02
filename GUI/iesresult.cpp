@@ -26,9 +26,26 @@ void IESResult::run(QString busca, int opt){
     QStringList label;
     int i=0;
     mysql_init(&con);
-    table->setColumnCount(20);
+    table->setColumnCount(18);
     label<<"Codigo"<<"Nome"<<"Sigla"<<"Município"<<"UF"<<"Região"<<"Categoria administrativa"<<"Organização Acadêmica"<<"IES da Capital";
-    label<<"Acesso portal CAPES";
+    label<<"Acesso portal CAPES"<<"Acesso outras bases"<<"Repositório Institucional"<<"Busca Integrada"<<"Serviço de Internet"<<"Participa de rede social"<<"Catálogo Online";
+    label<<"Quantidade de periodicos eletrônicos"<<"Quantidade de livros eletrônicos";
+    table->setColumnWidth(0,60);
+    table->setColumnWidth(1,650);
+    table->setColumnWidth(2,160);
+    table->setColumnWidth(3,150);
+    table->setColumnWidth(4,35);
+    table->setColumnWidth(6,200);
+    table->setColumnWidth(7,180);
+    table->setColumnWidth(9,200);
+    table->setColumnWidth(10,200);
+    table->setColumnWidth(11,200);
+    table->setColumnWidth(12,200);
+    table->setColumnWidth(13,200);
+    table->setColumnWidth(14,200);
+    table->setColumnWidth(15,200);
+    table->setColumnWidth(16,260);
+    table->setColumnWidth(17,250);
     table->setHorizontalHeaderLabels(label);
     table->verticalHeader()->setVisible(false);
     table->setMaximumWidth(TABLEWIDTH);
@@ -52,11 +69,15 @@ void IESResult::run(QString busca, int opt){
             break;
         case 5:
             query+="NO_MUNICIPIO=\""+buscatmp+"\"";
+            break;
+        case 6:
+            query+="SGL_UF=\""+buscatmp+"\"";
+            break;
         default:
             break;
     }
     cout<<query<<endl;
-    if(mysql_real_connect(&con,"127.0.0.1","root","root","IES_Schema",0,NULL,0)){
+    if(mysql_real_connect(&con,"127.0.0.1","root","root","IES_Schema_Test",0,NULL,0)){
         if(!mysql_query(&con,query.c_str())){
             result=mysql_store_result(&con);
             if(result){
@@ -78,6 +99,32 @@ void IESResult::run(QString busca, int opt){
                         table->setItem(i,9,new QTableWidgetItem("Verdadeiro"));
                     else
                         table->setItem(i,9,new QTableWidgetItem("Falso"));
+                    if(data[11][0]==1)
+                        table->setItem(i,10,new QTableWidgetItem("Verdadeiro"));
+                    else
+                        table->setItem(i,10,new QTableWidgetItem("Falso"));
+                    if(data[12][0]=='1')
+                        table->setItem(i,11,new QTableWidgetItem("Verdadeiro"));
+                    else
+                        table->setItem(i,11,new QTableWidgetItem("Falso"));
+                    if(data[13][0]=='1')
+                        table->setItem(i,12,new QTableWidgetItem("Verdadeiro"));
+                    else
+                        table->setItem(i,12,new QTableWidgetItem("Falso"));
+                    if(data[14][0]=='1')
+                        table->setItem(i,13,new QTableWidgetItem("Verdadeiro"));
+                    else
+                        table->setItem(i,13,new QTableWidgetItem("Falso"));
+                    if(data[15][0]=='1')
+                        table->setItem(i,14,new QTableWidgetItem("Verdadeiro"));
+                    else
+                        table->setItem(i,14,new QTableWidgetItem("Falso"));
+                    if(data[16][0]=='1')
+                        table->setItem(i,15,new QTableWidgetItem("Verdadeiro"));
+                    else
+                        table->setItem(i,15,new QTableWidgetItem("Falso"));
+                    table->setItem(i,16,new QTableWidgetItem(data[17]));
+                    table->setItem(i,17,new QTableWidgetItem(data[18]));
                     i++;
                 }
             }

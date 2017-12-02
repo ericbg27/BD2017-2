@@ -34,6 +34,9 @@ void IESForm::on_pushButton_released()
     else if(ui->MunRadio->isChecked()){
         cod=5;
     }
+    else if(ui->EstRadio->isChecked()){
+        cod=6;
+    }
     if(cod){
      IESResult *iesresult = new IESResult();
      iesresult->run(ui->Busca->text(), cod);
